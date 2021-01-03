@@ -19,4 +19,11 @@ class CHARACTERS
     def self.all
         @@all
     end
+
+    #find and display character details
+    def self.character_info(character_name)
+        self.all.find do |character|
+            character.name
+        end
+    end
 end

@@ -18,6 +18,7 @@ class CLI
 
     #menu functions
     def logic_gate
+
         selection = user_input
         if selection == 'y'
             #show character list
@@ -27,14 +28,25 @@ class CLI
             #show bye message
             goodbye
         else
-            puts "Error! These are not the droids you are looking for!"
-            logic_gate
+            error
         end
     end
-    def character_display
-        #print character list
+
+    def error
+        puts "Error! These are not the droids you are looking for, please try again!"
+        logic_gate
     end
 
+    def character_display
+        #print character list
+        puts "put characters here"
+        character_select
+    end
+    def character_select
+        puts "Select a character for more detail"
+        selection = user_input
+        Character.character_info(selection)
+    end
     def catchphrase
 
     end

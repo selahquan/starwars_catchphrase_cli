@@ -30,7 +30,7 @@ class Character
     #find and display character details
     def self.character_info(character_name)
         self.all.find do |character|
-            character.name
+            character.name == character_name
         end
     end
 end

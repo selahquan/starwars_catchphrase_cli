@@ -3,6 +3,8 @@ class CLI
     def run
         puts "Welcome to Star Wars Catchphrase"
         puts "May I have your name young padawan."
+        API.get_data
+        #binding.pry
         welcome(user_input)
     end
 
@@ -39,14 +41,25 @@ class CLI
 
     def character_display
         #print character list
-        puts "put characters here"
+        Character.all.each.with_index(1) do |character, i|
+            puts "#{i}. #{character.name}"
+        end
         character_select
     end
     def character_select
-        puts "Select a character for more detail"
+        puts "Select a character for more detail, or type 'next' for more characters"
         selection = user_input
-        Character.character_info(selection)
+        character = Character.character_info(selection)
+        character_details(character)
     end
+    def character_details(character)
+        puts "Name: #{character.name}"
+        puts "Birth Year: #{character.birth_year}"
+        puts "Gender: #{character.gender}"
+        puts "Homeworld: #{character.homeworld}"
+        logic_gate
+    end
+
     def catchphrase
 
     end

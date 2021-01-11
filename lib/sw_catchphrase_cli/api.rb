@@ -29,27 +29,10 @@ class API
             page.each do |character|
                 Character.new(character)
             end
-        
-        
-        #starwars_quote = RestClient::Request.execute(
-        #    :url => 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote', 
-        #    :method => :get, 
-            #:headers => headers,
-        #    :verify_ssl => true
-        #  )
-        
+
         starwars_quote = RestClient.get('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
         QUOTE.new(JSON.parse(starwars_quote))
         end
-        #binding.pry
-        
-
-        #response = RestClient.get('https://swapi.dev/api/people/')
-        #character_array = JSON.parse(response)["results"]
-        #character_array.each do |character|
-        #    Character.new(character)
-        #end
-        #binding.pry
     end
 
 end 

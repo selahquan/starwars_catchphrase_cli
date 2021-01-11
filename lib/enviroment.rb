@@ -5,5 +5,7 @@ Bundler.require
 require_relative "./sw_catchphrase_cli/api.rb"
 require_relative "./sw_catchphrase_cli/character.rb"
 require_relative "./sw_catchphrase_cli/cli.rb"
+require_relative "./sw_catchphrase_cli/quote.rb"
+
 
 puts "in enviroment"

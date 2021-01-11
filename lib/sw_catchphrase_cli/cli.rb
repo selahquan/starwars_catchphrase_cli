@@ -1,13 +1,13 @@
 class CLI
-    #the entryway method
+    
     def run
         sw_logo
         puts "Welcome to Star Wars Catchphrase"
         puts "May I have your name young padawan."
         API.get_data
-        #binding.pry
         welcome(user_input)
     end
+
     def sw_logo 
         puts <<-'HEREDOC'
            .           .        .                     .        .            .
@@ -31,7 +31,8 @@ class CLI
                                      .
                                                  .               .
         HEREDOC
-      end
+    end
+
     def welcome(name)
         puts "Greetings #{name}, is there a starwars character you would like to know more about?"
         puts "Type 'y' to see the list, 'n' to leave now. Type exit to leave at anytime."
@@ -42,15 +43,11 @@ class CLI
         gets.strip
     end
 
-    #menu functions
     def logic_gate
         selection = user_input
         if selection == 'y'
-            #show character list
             character_display
-            logic_gate
         elsif selection == 'n'
-            #show bye message
             goodbye
         elsif selection == 'exit'
             goodbye
@@ -94,17 +91,16 @@ class CLI
     end
 
     def character_display
-        #print character list
         Character.all.each.with_index(1) do |character, i|
             puts "#{i}. #{character.name}"
         end
         character_select
     end
+
     def character_select
         puts "Select a character by entering their number or typing their name for more detail."
         selection = user_input
-        #character = Character.character_info(selection)
-
+        
         if selection.to_i.between?(1, Character.all.length + 1)
             character =  Character.all[selection.to_i - 1]
         elsif Character.character_info(selection) != nil
@@ -129,7 +125,7 @@ class CLI
     def catchphrase
         puts "-----------------------"
         puts "-----------------------"
-        QUOTE.all[0].starWarsQuote
+        puts QUOTE.all[0].starWarsQuote
         puts "-----------------------"
         puts "-----------------------"
     end
